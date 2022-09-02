@@ -41,26 +41,22 @@ func init() { // 插件主体
 		Handle(func(ctx *zero.Ctx) {
 			var nickname = zero.BotConfig.NickName[0]
 			switch {
-			case poke.Load(ctx.Event.GroupID).AcquireN(3):
-				// 5分钟共8块命令牌 一次消耗3块命令牌
-				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("请不要戳", nickname, " >_<"))
-			case poke.Load(ctx.Event.GroupID).Acquire(3):
-				// 5分钟共8块命令牌 一次消耗3块命令牌
-				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("喂(#`O′) 戳", nickname, "的坤巴", "干嘛！"))
-			case poke.Load(ctx.Event.GroupID).Acquire(3):
-				// 5分钟共8块命令牌 一次消耗3块命令牌
-				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("再戳", ",我就测你们码"))
-			case poke.Load(ctx.Event.GroupID).Acquire(3):
-				// 5分钟共8块命令牌 一次消耗3块命令牌
-				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("别戳了", ",再戳老子坤巴要射了！！！"))
-			case poke.Load(ctx.Event.GroupID).Acquire(3):
-				// 5分钟共8块命令牌 一次消耗3块命令牌
+			case poke.Load(ctx.Event.GroupID).AcquireN(8):
+				// 5分钟共8块命令牌 一次消耗8块命令牌
 				time.Sleep(time.Second * 1)
 				ctx.SendChain(message.Text("呜呜呜", ",你的丁真哥哥不想破处"))
+			case poke.Load(ctx.Event.GroupID).Acquire(8):
+				// 5分钟共8块命令牌 一次消耗8块命令牌
+				time.Sleep(time.Second * 1)
+				ctx.SendChain(message.Text("喂(#`O′) 戳", nickname, "的坤巴", "干嘛！"))
+			case poke.Load(ctx.Event.GroupID).Acquire(8):
+				// 5分钟共8块命令牌 一次消耗8块命令牌
+				time.Sleep(time.Second * 1)
+				ctx.SendChain(message.Text("再戳", ",我就测你们码"))
+			case poke.Load(ctx.Event.GroupID).Acquire(8):
+				// 5分钟共8块命令牌 一次消耗8块命令牌
+				time.Sleep(time.Second * 1)
+				ctx.SendChain(message.Text("别戳了", ",再戳老子坤巴要射了！！！"))
 			default:
 				// 频繁触发，不回复
 			}
