@@ -74,8 +74,8 @@ func init() { // 插件主体
 						"只能..一点点..哦?",
 					}[rand.Intn(10)],
 				))
-				
-                                ctx.Send(message.Poke(ctx.Event.UserID))
+
+				ctx.Send(message.Poke(ctx.Event.UserID))
 			}
 		})
 	// 群空调
