@@ -41,22 +41,41 @@ func init() { // 插件主体
 		Handle(func(ctx *zero.Ctx) {
 			var nickname = zero.BotConfig.NickName[0]
 			switch {
-			case poke.Load(ctx.Event.GroupID).AcquireN():
-				// 5分钟共8块命令牌 一次消耗1块命令牌
+			case poke.Load(ctx.Event.GroupID).AcquireN(3):
+				// 5分钟共8块命令牌 一次消耗3块命令牌
 				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("请不要",nickname, ">_<"))
+				ctx.SendChain(message.Text(
+					[]string{
+						"请不要戳" + nickname + "的坤巴>_<",
+						"你再戳,老子的坤巴要射了",
+						"别戳了…痒……",
+						"好怪..你不要过来啊啊啊啊啊",
+						"丁真哥哥不想破处,你快别戳了",
+						"好啦..今天就满足你吧~",
+						"可恶啊...性御旺盛的大人真是讨厌..",
+						"我测你码,你个老骚货",
+						"只能..一点点..哦?",
+					}[rand.Intn(9)],
+				))
 			case poke.Load(ctx.Event.GroupID).Acquire():
 				// 5分钟共8块命令牌 一次消耗1块命令牌
 				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("喂(#`O′) 戳", nickname, "的坤巴", "干嘛！"))
-			case poke.Load(ctx.Event.GroupID).Acquire():
-				// 5分钟共8块命令牌 一次消耗1块命令牌
-				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("再戳", ",我就测你们码"))
-			case poke.Load(ctx.Event.GroupID).Acquire():
-				// 5分钟共8块命令牌 一次消耗1块命令牌
-				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("别戳了", ",再戳老子坤巴要射了！！！"))
+				ctx.SendChain(message.Text(
+					[]string{
+						"请不要戳" + nickname + "的坤巴>_<",
+						"你再戳,老子的坤巴要射了",
+						"别戳了…痒……",
+						"好怪..你不要过来啊啊啊啊啊",
+						"丁真哥哥不想破处,你快别戳了",
+						"好啦..今天就满足你吧~",
+						"可恶啊...性御旺盛的大人真是讨厌..",
+						"我测你码,你个老骚货",
+						"别别别,我还要做青青草原上最纯真的男孩",
+						"只能..一点点..哦?",
+					}[rand.Intn(10)],
+				))
+				
+                                ctx.Send(message.Poke(ctx.Event.UserID))
 			}
 		})
 	// 群空调
